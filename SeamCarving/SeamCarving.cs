@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace SeamCarving
 {
-    public partial class Form1 : Form
+    public partial class SeamCarving : Form
     {
-        public Form1()
+        public SeamCarving()
         {
             InitializeComponent();
         }
