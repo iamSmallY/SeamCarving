@@ -36,14 +36,15 @@ namespace SeamCarving
             this.heightInput = new System.Windows.Forms.TextBox();
             this.carvingButton = new System.Windows.Forms.Button();
             this.uploadButton = new System.Windows.Forms.Button();
+            this.openFileDialog = new System.Windows.Forms.OpenFileDialog();
             ((System.ComponentModel.ISupportInitialize)(this.picture)).BeginInit();
             this.SuspendLayout();
             // 
             // picture
             // 
-            this.picture.Location = new System.Drawing.Point(0, 0);
+            this.picture.Location = new System.Drawing.Point(12, 12);
             this.picture.Name = "picture";
-            this.picture.Size = new System.Drawing.Size(661, 438);
+            this.picture.Size = new System.Drawing.Size(649, 426);
             this.picture.TabIndex = 0;
             this.picture.TabStop = false;
             // 
@@ -102,6 +103,11 @@ namespace SeamCarving
             this.uploadButton.TabIndex = 6;
             this.uploadButton.Text = "上传图片";
             this.uploadButton.UseVisualStyleBackColor = true;
+            this.uploadButton.Click += new System.EventHandler(this.uploadButton_Click);
+            // 
+            // openFileDialog
+            // 
+            this.openFileDialog.FileName = "openFileDialog";
             // 
             // SeamCarving
             // 
@@ -132,6 +138,7 @@ namespace SeamCarving
         private System.Windows.Forms.TextBox heightInput;
         private System.Windows.Forms.Button carvingButton;
         private System.Windows.Forms.Button uploadButton;
+        private System.Windows.Forms.OpenFileDialog openFileDialog;
     }
 }
 
