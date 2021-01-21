@@ -121,6 +121,8 @@ namespace SeamCarving
             this.Controls.Add(this.widthInput);
             this.Controls.Add(this.widthLabel);
             this.Controls.Add(this.picture);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false;
             this.Name = "SeamCarving";
             this.Text = "图像裁切工具";
             ((System.ComponentModel.ISupportInitialize)(this.picture)).EndInit();
