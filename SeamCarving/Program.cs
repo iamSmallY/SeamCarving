@@ -16,7 +16,7 @@ namespace SeamCarving
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new SeamCarving());
+            Application.Run(new MainForm());
         }
     }
 }

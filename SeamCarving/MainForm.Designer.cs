@@ -1,7 +1,7 @@
 ﻿
 namespace SeamCarving
 {
-    partial class SeamCarving
+    partial class MainForm
     {
         /// <summary>
         /// 必需的设计器变量。

@@ -5,9 +5,9 @@ using System.IO;
 
 namespace SeamCarving
 {
-    public partial class SeamCarving : Form
+    public partial class MainForm : Form
     {
-        public SeamCarving()
+        public MainForm()
         {
             InitializeComponent();
         }
