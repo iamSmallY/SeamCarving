@@ -37,6 +37,10 @@ namespace SeamCarving
             this.carvingButton = new System.Windows.Forms.Button();
             this.uploadButton = new System.Windows.Forms.Button();
             this.openFileDialog = new System.Windows.Forms.OpenFileDialog();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.originWidth = new System.Windows.Forms.TextBox();
+            this.originHeight = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.picture)).BeginInit();
             this.SuspendLayout();
             // 
@@ -44,7 +48,7 @@ namespace SeamCarving
             // 
             this.picture.Location = new System.Drawing.Point(12, 12);
             this.picture.Name = "picture";
-            this.picture.Size = new System.Drawing.Size(649, 426);
+            this.picture.Size = new System.Drawing.Size(754, 507);
             this.picture.TabIndex = 0;
             this.picture.TabStop = false;
             // 
@@ -52,16 +56,16 @@ namespace SeamCarving
             // 
             this.widthLabel.AutoSize = true;
             this.widthLabel.Font = new System.Drawing.Font("宋体", 14F);
-            this.widthLabel.Location = new System.Drawing.Point(667, 24);
+            this.widthLabel.Location = new System.Drawing.Point(772, 130);
             this.widthLabel.Name = "widthLabel";
-            this.widthLabel.Size = new System.Drawing.Size(66, 19);
+            this.widthLabel.Size = new System.Drawing.Size(104, 19);
             this.widthLabel.TabIndex = 1;
-            this.widthLabel.Text = "宽度：";
+            this.widthLabel.Text = "目标宽度：";
             // 
             // widthInput
             // 
             this.widthInput.Font = new System.Drawing.Font("宋体", 14F);
-            this.widthInput.Location = new System.Drawing.Point(688, 46);
+            this.widthInput.Location = new System.Drawing.Point(882, 127);
             this.widthInput.Name = "widthInput";
             this.widthInput.Size = new System.Drawing.Size(100, 29);
             this.widthInput.TabIndex = 2;
@@ -70,16 +74,16 @@ namespace SeamCarving
             // 
             this.heightLabel.AutoSize = true;
             this.heightLabel.Font = new System.Drawing.Font("宋体", 14F);
-            this.heightLabel.Location = new System.Drawing.Point(667, 95);
+            this.heightLabel.Location = new System.Drawing.Point(772, 179);
             this.heightLabel.Name = "heightLabel";
-            this.heightLabel.Size = new System.Drawing.Size(66, 19);
+            this.heightLabel.Size = new System.Drawing.Size(104, 19);
             this.heightLabel.TabIndex = 3;
-            this.heightLabel.Text = "高度：";
+            this.heightLabel.Text = "目标高度：";
             // 
             // heightInput
             // 
             this.heightInput.Font = new System.Drawing.Font("宋体", 14F);
-            this.heightInput.Location = new System.Drawing.Point(688, 117);
+            this.heightInput.Location = new System.Drawing.Point(882, 176);
             this.heightInput.Name = "heightInput";
             this.heightInput.Size = new System.Drawing.Size(100, 29);
             this.heightInput.TabIndex = 4;
@@ -87,17 +91,18 @@ namespace SeamCarving
             // carvingButton
             // 
             this.carvingButton.Font = new System.Drawing.Font("宋体", 14F);
-            this.carvingButton.Location = new System.Drawing.Point(688, 176);
+            this.carvingButton.Location = new System.Drawing.Point(882, 243);
             this.carvingButton.Name = "carvingButton";
             this.carvingButton.Size = new System.Drawing.Size(100, 30);
             this.carvingButton.TabIndex = 5;
             this.carvingButton.Text = "裁 切";
             this.carvingButton.UseVisualStyleBackColor = true;
+            this.carvingButton.Click += new System.EventHandler(this.carvingButton_Click);
             // 
             // uploadButton
             // 
             this.uploadButton.Font = new System.Drawing.Font("宋体", 14F);
-            this.uploadButton.Location = new System.Drawing.Point(688, 400);
+            this.uploadButton.Location = new System.Drawing.Point(882, 481);
             this.uploadButton.Name = "uploadButton";
             this.uploadButton.Size = new System.Drawing.Size(100, 38);
             this.uploadButton.TabIndex = 6;
@@ -109,11 +114,53 @@ namespace SeamCarving
             // 
             this.openFileDialog.FileName = "openFileDialog";
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("宋体", 14F);
+            this.label1.Location = new System.Drawing.Point(772, 29);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(104, 19);
+            this.label1.TabIndex = 7;
+            this.label1.Text = "原图宽度：";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("宋体", 14F);
+            this.label2.Location = new System.Drawing.Point(772, 73);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(104, 19);
+            this.label2.TabIndex = 8;
+            this.label2.Text = "原图高度：";
+            // 
+            // originWidth
+            // 
+            this.originWidth.Enabled = false;
+            this.originWidth.Font = new System.Drawing.Font("宋体", 14F);
+            this.originWidth.Location = new System.Drawing.Point(882, 26);
+            this.originWidth.Name = "originWidth";
+            this.originWidth.Size = new System.Drawing.Size(100, 29);
+            this.originWidth.TabIndex = 9;
+            // 
+            // originHeight
+            // 
+            this.originHeight.Enabled = false;
+            this.originHeight.Font = new System.Drawing.Font("宋体", 14F);
+            this.originHeight.Location = new System.Drawing.Point(882, 70);
+            this.originHeight.Name = "originHeight";
+            this.originHeight.Size = new System.Drawing.Size(100, 29);
+            this.originHeight.TabIndex = 10;
+            // 
             // SeamCarving
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(1026, 544);
+            this.Controls.Add(this.originHeight);
+            this.Controls.Add(this.originWidth);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.uploadButton);
             this.Controls.Add(this.carvingButton);
             this.Controls.Add(this.heightInput);
@@ -141,6 +188,10 @@ namespace SeamCarving
         private System.Windows.Forms.Button carvingButton;
         private System.Windows.Forms.Button uploadButton;
         private System.Windows.Forms.OpenFileDialog openFileDialog;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.TextBox originWidth;
+        private System.Windows.Forms.TextBox originHeight;
     }
 }
 
