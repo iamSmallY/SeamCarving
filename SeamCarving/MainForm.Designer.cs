@@ -30,17 +30,14 @@ namespace SeamCarving
         private void InitializeComponent()
         {
             this.picture = new System.Windows.Forms.PictureBox();
-            this.widthLabel = new System.Windows.Forms.Label();
-            this.widthInput = new System.Windows.Forms.TextBox();
-            this.heightLabel = new System.Windows.Forms.Label();
-            this.heightInput = new System.Windows.Forms.TextBox();
-            this.carvingButton = new System.Windows.Forms.Button();
+            this.verticalSeamButton = new System.Windows.Forms.Button();
             this.uploadButton = new System.Windows.Forms.Button();
             this.openFileDialog = new System.Windows.Forms.OpenFileDialog();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.originWidth = new System.Windows.Forms.TextBox();
             this.originHeight = new System.Windows.Forms.TextBox();
+            this.horizontalSeamButton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.picture)).BeginInit();
             this.SuspendLayout();
             // 
@@ -49,55 +46,20 @@ namespace SeamCarving
             this.picture.Location = new System.Drawing.Point(12, 12);
             this.picture.Name = "picture";
             this.picture.Size = new System.Drawing.Size(754, 507);
+            this.picture.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.picture.TabIndex = 0;
             this.picture.TabStop = false;
             // 
-            // widthLabel
+            // verticalSeamButton
             // 
-            this.widthLabel.AutoSize = true;
-            this.widthLabel.Font = new System.Drawing.Font("宋体", 14F);
-            this.widthLabel.Location = new System.Drawing.Point(772, 130);
-            this.widthLabel.Name = "widthLabel";
-            this.widthLabel.Size = new System.Drawing.Size(104, 19);
-            this.widthLabel.TabIndex = 1;
-            this.widthLabel.Text = "目标宽度：";
-            // 
-            // widthInput
-            // 
-            this.widthInput.Font = new System.Drawing.Font("宋体", 14F);
-            this.widthInput.Location = new System.Drawing.Point(882, 127);
-            this.widthInput.Name = "widthInput";
-            this.widthInput.Size = new System.Drawing.Size(100, 29);
-            this.widthInput.TabIndex = 2;
-            // 
-            // heightLabel
-            // 
-            this.heightLabel.AutoSize = true;
-            this.heightLabel.Font = new System.Drawing.Font("宋体", 14F);
-            this.heightLabel.Location = new System.Drawing.Point(772, 179);
-            this.heightLabel.Name = "heightLabel";
-            this.heightLabel.Size = new System.Drawing.Size(104, 19);
-            this.heightLabel.TabIndex = 3;
-            this.heightLabel.Text = "目标高度：";
-            // 
-            // heightInput
-            // 
-            this.heightInput.Font = new System.Drawing.Font("宋体", 14F);
-            this.heightInput.Location = new System.Drawing.Point(882, 176);
-            this.heightInput.Name = "heightInput";
-            this.heightInput.Size = new System.Drawing.Size(100, 29);
-            this.heightInput.TabIndex = 4;
-            // 
-            // carvingButton
-            // 
-            this.carvingButton.Font = new System.Drawing.Font("宋体", 14F);
-            this.carvingButton.Location = new System.Drawing.Point(882, 243);
-            this.carvingButton.Name = "carvingButton";
-            this.carvingButton.Size = new System.Drawing.Size(100, 30);
-            this.carvingButton.TabIndex = 5;
-            this.carvingButton.Text = "裁 切";
-            this.carvingButton.UseVisualStyleBackColor = true;
-            this.carvingButton.Click += new System.EventHandler(this.carvingButton_Click);
+            this.verticalSeamButton.Font = new System.Drawing.Font("宋体", 14F);
+            this.verticalSeamButton.Location = new System.Drawing.Point(882, 206);
+            this.verticalSeamButton.Name = "verticalSeamButton";
+            this.verticalSeamButton.Size = new System.Drawing.Size(100, 30);
+            this.verticalSeamButton.TabIndex = 5;
+            this.verticalSeamButton.Text = "纵向裁切";
+            this.verticalSeamButton.UseVisualStyleBackColor = true;
+            this.verticalSeamButton.Click += new System.EventHandler(this.verticalSeamButton_Click);
             // 
             // uploadButton
             // 
@@ -122,7 +84,7 @@ namespace SeamCarving
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(104, 19);
             this.label1.TabIndex = 7;
-            this.label1.Text = "原图宽度：";
+            this.label1.Text = "图片宽度：";
             // 
             // label2
             // 
@@ -132,7 +94,7 @@ namespace SeamCarving
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(104, 19);
             this.label2.TabIndex = 8;
-            this.label2.Text = "原图高度：";
+            this.label2.Text = "图片高度：";
             // 
             // originWidth
             // 
@@ -152,25 +114,33 @@ namespace SeamCarving
             this.originHeight.Size = new System.Drawing.Size(100, 29);
             this.originHeight.TabIndex = 10;
             // 
-            // SeamCarving
+            // horizontalSeamButton
+            // 
+            this.horizontalSeamButton.Font = new System.Drawing.Font("宋体", 14F);
+            this.horizontalSeamButton.Location = new System.Drawing.Point(882, 156);
+            this.horizontalSeamButton.Name = "horizontalSeamButton";
+            this.horizontalSeamButton.Size = new System.Drawing.Size(100, 30);
+            this.horizontalSeamButton.TabIndex = 11;
+            this.horizontalSeamButton.Text = "横向裁切";
+            this.horizontalSeamButton.UseVisualStyleBackColor = true;
+            this.horizontalSeamButton.Click += new System.EventHandler(this.horizontalSeamButton_Click);
+            // 
+            // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1026, 544);
+            this.ClientSize = new System.Drawing.Size(1003, 536);
+            this.Controls.Add(this.horizontalSeamButton);
             this.Controls.Add(this.originHeight);
             this.Controls.Add(this.originWidth);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.uploadButton);
-            this.Controls.Add(this.carvingButton);
-            this.Controls.Add(this.heightInput);
-            this.Controls.Add(this.heightLabel);
-            this.Controls.Add(this.widthInput);
-            this.Controls.Add(this.widthLabel);
+            this.Controls.Add(this.verticalSeamButton);
             this.Controls.Add(this.picture);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
-            this.Name = "SeamCarving";
+            this.Name = "MainForm";
             this.Text = "图像裁切工具";
             ((System.ComponentModel.ISupportInitialize)(this.picture)).EndInit();
             this.ResumeLayout(false);
@@ -181,17 +151,14 @@ namespace SeamCarving
         #endregion
 
         private System.Windows.Forms.PictureBox picture;
-        private System.Windows.Forms.Label widthLabel;
-        private System.Windows.Forms.TextBox widthInput;
-        private System.Windows.Forms.Label heightLabel;
-        private System.Windows.Forms.TextBox heightInput;
-        private System.Windows.Forms.Button carvingButton;
+        private System.Windows.Forms.Button verticalSeamButton;
         private System.Windows.Forms.Button uploadButton;
         private System.Windows.Forms.OpenFileDialog openFileDialog;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox originWidth;
         private System.Windows.Forms.TextBox originHeight;
+        private System.Windows.Forms.Button horizontalSeamButton;
     }
 }
 

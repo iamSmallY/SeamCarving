@@ -7,6 +7,7 @@ namespace SeamCarving
 {
     public partial class MainForm : Form
     {
+        private SeamCarver seamCarver { get; set; }
         public MainForm()
         {
             InitializeComponent();
@@ -23,24 +24,28 @@ namespace SeamCarving
                 {
                     var pictureFile = openFileDialog.FileName;
                     var image = Image.FromFile(pictureFile);
+                    /**
                     if (image.Height > picture.Height || image.Width > picture.Width)
                     {
                         // 如果图片过大则报错
-                        throw new ImageWidthHeightException();
+                        throw new ImageWidthHeightException("图片过大，请重新选择。");
                     }
+                    */
                     // 显示图片与长宽
                     picture.Image = image;
                     originHeight.Text = image.Height.ToString();
                     originWidth.Text = image.Width.ToString();
+                    // 初始化裁切对象
+                    seamCarver = new SeamCarver(image);
                 }
             }
             catch(FileNotFoundException)
             {
                 MessageBox.Show("文件不存在，请重新选择。");
             }
-            catch(ImageWidthHeightException)
+            catch(IllegalArgumentException ep)
             {
-                MessageBox.Show("图片过大，请重新选择。");
+                MessageBox.Show(ep.Message);
             }
             catch
             {
@@ -48,28 +53,53 @@ namespace SeamCarving
             }
         }
 
-        private void carvingButton_Click(object sender, EventArgs e)
+        private void horizontalSeamButton_Click(object sender, EventArgs e)
         {
-            // todo 裁切
+            if (seamCarver == null)
+            {
+                MessageBox.Show("请先上传图片。");
+                return;
+            }
             try
             {
-                Bitmap bitmap = new Bitmap(picture.Image);
-                for (var i = 0; i < bitmap.Width; ++i)
-                {
-                    for (var j = 0; j < bitmap.Height; ++j)
-                    {
-                        Color newColor = Color.FromArgb(bitmap.GetPixel(i, j).R, 0, 0);
-                        bitmap.SetPixel(i, j, newColor);
-                    }
-                }
-                picture.Image = bitmap;
+                seamCarver.RemoveHorizontalSeam(seamCarver.FindHorizontalSeam());
+                picture.Image = seamCarver.Picture();
+                originWidth.Text = seamCarver.width.ToString();
+                originHeight.Text = seamCarver.height.ToString();
             }
-            catch (ArgumentException)
+            catch (IllegalArgumentException ep)
             {
-                MessageBox.Show("裁切时发生错误");
+                MessageBox.Show(ep.Message);
+            }
+            catch (Exception ep)
+            {
+                MessageBox.Show(ep.Message);
             }
         }
 
-        private class ImageWidthHeightException :  Exception { }
+        private void verticalSeamButton_Click(object sender, EventArgs e)
+        {
+            if (seamCarver == null)
+            {
+                MessageBox.Show("请先上传图片。");
+                return;
+            }
+            try
+            {
+                seamCarver.RemoveVerticalSeam(seamCarver.FindVerticalSeam());
+                picture.Image = seamCarver.Picture();
+                originWidth.Text = seamCarver.width.ToString();
+                originHeight.Text = seamCarver.height.ToString();
+            }
+            catch (IllegalArgumentException ep)
+            {
+                MessageBox.Show(ep.Message);
+            }
+            catch (Exception ep)
+            {
+                MessageBox.Show(ep.Message);
+            }
+        }
+
     }
 }
