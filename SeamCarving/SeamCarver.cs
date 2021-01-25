@@ -159,6 +159,13 @@ namespace SeamCarving
             {
                 throw new IllegalArgumentException("高度不足，无法裁切。");
             }
+            for (var i = 1; i < width; ++i)
+            {
+                if (Math.Abs(seam[i - 1] - seam[i]) > 1)
+                {
+                    throw new IllegalArgumentException("非法接缝，两个像素之间距离大于1。");
+                }
+            }
             height -= 1;
             for (var i = 0; i < width; ++i)
             {
@@ -182,6 +189,13 @@ namespace SeamCarving
             if (width <= 1)
             {
                 throw new IllegalArgumentException("宽度不足，无法裁切。");
+            }
+            for (var j = 1; j < height; ++j)
+            {
+                if (Math.Abs(seam[j - 1] - seam[j]) > 1)
+                {
+                    throw new IllegalArgumentException("非法接缝，两个像素之间距离大于1。");
+                }
             }
             width -= 1;
             for (var j = 0; j < height; ++j)
