@@ -3,7 +3,7 @@ using System.Drawing;
 
 namespace SeamCarving
 {
-    class SeamCarver
+    class SeamCarver : SeamCarverInterface
     {
         public int width { get; private set; }
         public int height { get; private set; }
